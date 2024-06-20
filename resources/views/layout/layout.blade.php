@@ -12,10 +12,10 @@
       <div >
         <ul>
           <li class="flex gap-5">
-            <a href="">Home</a>
+            <a href="/">Home</a>
             <a href="">Order Stand</a>
             <a href="">How To Order ?</a>
-            <a href="">Admin</a>
+            <a href="/authPage">Admin</a>
           </li>
         </ul>
       </div>
@@ -24,7 +24,7 @@
   @yield('content') 
 </div>
 
-<footer class="p-6 bg-black text-white fixed bottom-0 w-full">
+<footer class="p-6 bg-black text-white  w-full">
     <div >
       <h1>Footer</h1>
     </div>
