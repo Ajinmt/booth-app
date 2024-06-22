@@ -18,7 +18,7 @@ class Cek_login
     {
 
          if(!Auth::check()){
-        return redirect('login');
+        return redirect('authPage');
        }
 
     //    simpan data user
@@ -29,6 +29,6 @@ class Cek_login
        }
 
        //jika tidak memiliki akses maka kembalikan ke halaman login
-        return redirect('login')->with('error','Maaf anda tidak memiliki akses');
+        return redirect('authPage')->with('error','Maaf anda tidak memiliki akses');
     }
 }

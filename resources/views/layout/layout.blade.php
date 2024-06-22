@@ -15,7 +15,7 @@
             <a href="/">Home</a>
             <a href="">Order Stand</a>
             <a href="">How To Order ?</a>
-            <a href="/authPage">Admin</a>
+            <a href="/authPage">Login</a>
           </li>
         </ul>
       </div>

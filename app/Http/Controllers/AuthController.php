@@ -19,12 +19,12 @@ class AuthController extends Controller
             // jika user nya memiliki level admin
             if($user->level =='admin'){
                  // arahkan ke halaman admin ya :P
-                return redirect()->intended('admin');
+                return redirect()->intended('adminPage');
             }
               // jika user nya memiliki level user
             else if($user->level =='user'){
                // arahkan ke halaman user
-                return redirect()->intended('user');
+                return redirect()->intended('userPage');
             }
 
         }
@@ -49,12 +49,12 @@ class AuthController extends Controller
             $user =  Auth::user();
             // cek lagi jika level user admin maka arahkan ke halaman admin
             if($user->level =='admin'){
-                return redirect()->intended('admin');
+                return redirect()->intended('adminPage');
 
             }
                 // tapi jika level user nya user biasa maka arahkan ke halaman user
                else if($user->level =='user'){
-                return redirect()->intended('user');
+                return redirect()->intended('userPage');
             }
              // jika belum ada role maka ke halaman /
             return redirect()->intended('/');
@@ -62,23 +62,49 @@ class AuthController extends Controller
 
 // jika ga ada data user yang valid maka kembalikan lagi ke halaman login
 // pastikan kirim pesan error juga kalau login gagal ya
-        return redirect('login')
+        return redirect('authPage')
             ->withInput()
-            ->withErrors(['login_gagal'=>'These credentials does not match our records']);
-
-
-
+            ->withErrors(['login_gagal'=>'Nama atau password yang anda masukkan salah']);
      }
+ public function register(){
+      // tampilkan view register
+        return view('registerPage');
+      }
+
+
+// aksi form register
+     public function proses_register(Request $request){ 
+    // Kita buat validasi untuk proses register
+    // Validasinya yaitu semua field wajib diisi
+    // Validasi username dan email harus unique atau tidak boleh duplicate username dan email
+    $validator = Validator::make($request->all(), [
+        'name' => 'required',
+        'username' => 'required|unique:users',
+        'email' => 'required|email|unique:users',
+        'password' => 'required'
+    ]);
+
+    // Kalau gagal, kembali ke halaman register dengan munculkan pesan error
+    if ($validator->fails()) {
+        return redirect('/register')
+            ->withErrors($validator)
+            ->withInput();
+    }
+
+    // Kalau berhasil, isi level & hash passwordnya biar secure
+    $request['level'] = 'user';
+    $request['password'] = bcrypt($request->password);
+
+    // Masukkan semua data pada request ke table user
+    User::create($request->all());
+
+    // Kalau berhasil arahkan ke halaman login
+    return redirect()->route('login');
+}
 
      public function logout(Request $request){
-// logout itu harus menghapus session nya 
-
         $request->session()->flush();
-
-// jalan kan juga fungsi logout pada auth 
-
         Auth::logout();
-// kembali kan ke halaman login
-        return Redirect('login');
+        return Redirect('adminPage');
       }
 }
