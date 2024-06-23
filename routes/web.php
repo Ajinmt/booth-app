@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\UserController;
 
 
@@ -20,6 +21,9 @@ use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('home');
+});  
+Route::get('/cara_pemesanan', function () {
+    return view('howToOrderPage');
 });  
 
 Route::get('authPage', [AuthController::class,'index'])->name('login');
@@ -39,3 +43,6 @@ Route::group(['middleware' => ['auth']], function () {
         Route::resource('userPage', UserController::class);
     });
 });
+
+// pesan Booth 
+Route::get('/pesan_booth', [OrderController::class,'index'])->name('orderPage');
