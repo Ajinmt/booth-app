@@ -12,17 +12,15 @@
       <div >
         <ul>
           <li class="flex gap-5">
-            <a href="/">Home</a>
-            <a href="">Order Stand</a>
-            <a href="">How To Order ?</a>
+            <a href="/">Beranda</a>
+            <a href="/pesan_booth">Pesan Booth</a>
+            <a href="/cara_pemesanan">Cara Memesan Booth ?</a>
             <a href="/authPage">Login</a>
           </li>
         </ul>
       </div>
 </nav>
-<div>
   @yield('content') 
-</div>
 
 <footer class="p-6 bg-black text-white  w-full">
     <div >
