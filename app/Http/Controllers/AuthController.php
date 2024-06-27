@@ -19,7 +19,7 @@ class AuthController extends Controller
             // jika user nya memiliki level admin
             if($user->level =='admin'){
                  // arahkan ke halaman admin ya :P
-                return redirect()->intended('adminPage');
+                return redirect()->intended('dashboard');
             }
               // jika user nya memiliki level user
             else if($user->level =='user'){
@@ -49,7 +49,7 @@ class AuthController extends Controller
             $user =  Auth::user();
             // cek lagi jika level user admin maka arahkan ke halaman admin
             if($user->level =='admin'){
-                return redirect()->intended('adminPage');
+                return redirect()->intended('dashboard');
 
             }
                 // tapi jika level user nya user biasa maka arahkan ke halaman user
@@ -105,6 +105,6 @@ class AuthController extends Controller
      public function logout(Request $request){
         $request->session()->flush();
         Auth::logout();
-        return Redirect('adminPage');
+        return Redirect('/');
       }
 }

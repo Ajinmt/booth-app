@@ -4,7 +4,7 @@
       <h1 class="md:text-6xl text-5xl text-center font-bold md:mb-10 ">Pemesanan Stand Booth festival rakyat Kota Kediri</h1>
       <div class="flex gap-5  md:w-1/2 w-full">
         <a href="" class="bg-black hover:opacity-80 text-white font-semibold  rounded focus:outline-none focus:shadow-outline px-8 py-5 w-full text-center">Pesan Sekarang</a>
-          <a href="#check-booth"  class="outline outline-1 outline-black hover:opacity-80  font-semibold  rounded focus:outline-none focus:shadow-outline px-8 py-5 w-full text-center focus:outline-none ">Cek Booth</a>
+          <a href="#check-booth"  class="outline outline-1 outline-black hover:opacity-80  font-semibold  rounded focus:shadow-outline px-8 py-5 w-full text-center focus:outline-none ">Cek Booth</a>
        
       
       </div>
