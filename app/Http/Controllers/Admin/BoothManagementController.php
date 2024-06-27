@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Booth;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 
 class BoothManagementController extends Controller
 {

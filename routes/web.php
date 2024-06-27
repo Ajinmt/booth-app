@@ -9,7 +9,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\BoothManagementController;
 use App\Http\Controllers\Admin\UserManagementController;
-use App\Models\users;
+use App\Models\User;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +44,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::group(['middleware' => ['cek_login:admin']], function () {
         Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
         Route::resource('booth-management', BoothManagementController::class);
+        Route::resource('user-management', UserManagementController::class, ['parameters' => [
+            'user-management' => 'user'
+        ]]);
     });
     Route::group(['middleware' => ['cek_login:user']], function () {
         Route::resource('userPage', UserController::class);

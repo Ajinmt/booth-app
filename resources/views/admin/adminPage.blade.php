@@ -15,7 +15,7 @@
             <li class="flex gap-5">
                 <a href="{{ route('admin.dashboard') }}">Dashboard</a>
                 <a  href="{{ route('booth-management.index') }}">Booth Management</a>
-                <a href="admin/user-management/index">User Management</a>
+                <a href="{{ route('user-management.index') }}">User Management</a>
                 <a href="{{ url('logout') }}">Logout</a>
             </li>
           </ul>
