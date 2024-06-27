@@ -6,6 +6,10 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\BoothManagementController;
+use App\Http\Controllers\Admin\UserManagementController;
+use App\Models\User;
 
 
 /*
@@ -19,13 +23,15 @@ use App\Http\Controllers\UserController;
 |
 */
 
+
 Route::get('/', function () {
     return view('home');
 });  
 Route::get('/cara_pemesanan', function () {
     return view('howToOrderPage');
-});  
+}); 
 
+//Authentication Routes
 Route::get('authPage', [AuthController::class,'index'])->name('login');
 Route::get('register', [AuthController::class,'register'])->name('register');
 Route::get('logout', [AuthController::class,'logout'])->name('logout');
@@ -33,11 +39,14 @@ Route::post('proses_login', [AuthController::class,'proses_login'])->name('prose
 Route::post('proses_register', [AuthController::class,'proses_register'])->name('proses_register'); 
 
 
-
-//middleware login 
+// Middleware Login
 Route::group(['middleware' => ['auth']], function () {
     Route::group(['middleware' => ['cek_login:admin']], function () {
-        Route::resource('adminPage', AdminController::class);
+        Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+        Route::resource('booth-management', BoothManagementController::class);
+        Route::resource('user-management', UserManagementController::class, ['parameters' => [
+            'user-management' => 'user'
+        ]]);
     });
     Route::group(['middleware' => ['cek_login:user']], function () {
         Route::resource('userPage', UserController::class);
