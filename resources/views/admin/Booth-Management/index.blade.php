@@ -1,4 +1,4 @@
-@extends('admin.adminPage')
+@extends('admin.adminLayout')
 
 @section('content')
 <div class="relative container mx-auto px-4 py-8">
