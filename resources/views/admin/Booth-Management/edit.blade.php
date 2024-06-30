@@ -1,4 +1,4 @@
-@extends('admin.adminPage')
+@extends('admin.adminLayout')
 
 @section('content')
     <div class="container mx-auto mt-10">
@@ -18,6 +18,13 @@
             <div class="mb-4">
                 <label for="deskripsi" class="block text-gray-700 text-sm font-bold mb-2">Deskripsi:</label>
                 <textarea id="deskripsi" name="deskripsi" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">{{ $booth->deskripsi }}</textarea>
+            </div>  
+            <div class="mb-4">
+                <label for="status" class="block text-gray-700 text-sm font-bold mb-2">Status:</label>
+                <select id="status" name="status" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    <option value="tersedia" {{ $booth->status === 'tersedia' ? 'selected' : '' }}>Tersedia</option>
+                    <option value="tidak tersedia" {{ $booth->status === 'tidak tersedia' ? 'selected' : '' }}>Tidak Tersedia</option>
+                </select>
             </div>  
             <div class="mb-4">
                 <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Update Booth</button>

@@ -1,4 +1,4 @@
-@extends('admin.adminPage')
+@extends('admin.adminLayout')
 
 @section('content')
     <div class="container mx-auto mt-10">

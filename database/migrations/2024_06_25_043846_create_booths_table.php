@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('nama');
             $table->text('deskripsi')->nullable();
             $table->decimal('harga', 15, 2)->default(0.00);
+            $table->enum('status', ['tersedia', 'tidak tersedia'])->default('tersedia');
             $table->timestamps();
         });
     }
