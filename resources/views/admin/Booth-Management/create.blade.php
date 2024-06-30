@@ -1,9 +1,8 @@
-@extends('admin.adminPage')
+@extends('admin.adminLayout')
 
 @section('content')
     <div class="container mx-auto mt-10">
         <h1 class="text-3xl font-semibold mb-6">Add Booth</h1>
-
         @if ($errors->any())
             <div class="bg-red-200 text-red-800 py-2 px-4 rounded mb-4">
                 <ul class="list-disc pl-5">
@@ -13,7 +12,6 @@
                 </ul>
             </div>
         @endif
-
         <form action="{{ route('booth-management.store') }}" method="POST">
             @csrf
             <div class="mb-4">

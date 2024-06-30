@@ -13,5 +13,6 @@ class Booth extends Model
         'nama',
         'harga', 
         'deskripsi',
+        'status',
     ];
 }

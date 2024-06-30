@@ -70,11 +70,11 @@ class BoothManagementController extends Controller
      */
     public function update(Request $request, $id)
     {
-
         $request->validate([
             'nama' => 'required|string|max:255',
             'deskripsi' => 'nullable|string',
             'harga' => 'required|numeric',
+            'status' => 'required|in:tersedia,tidak tersedia', // Validasi untuk status
         ]);
 
         $booth = Booth::findOrFail($id);
@@ -82,6 +82,7 @@ class BoothManagementController extends Controller
         $booth->nama = $request->nama;
         $booth->harga = $request->harga;
         $booth->deskripsi = $request->deskripsi;
+        $booth->status = $request->status; // Mengambil nilai status dari form
 
         $booth->save();
 
