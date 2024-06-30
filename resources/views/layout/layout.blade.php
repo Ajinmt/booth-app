@@ -9,7 +9,7 @@
 <body class="bg-gray-100">
     <!-- Sticky Navbar -->
     <nav class="sticky top-0 p-6 bg-black text-white flex justify-between items-center z-10">
-      <h class="text-3xl">Booth Booking</h>
+      <h1 class="text-3xl">Booth Booking</h1>
       <div class="hidden md:block">
         <ul class="flex gap-5">
           <li><a href="/" class="hover:text-gray-300">Beranda</a></li>
