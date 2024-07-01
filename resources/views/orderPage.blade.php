@@ -9,7 +9,9 @@
                 <div class="bg-white p-4 shadow-md rounded-lg">
                     <h2 class="text-xl font-semibold mb-2">{{ $booth->nama }}</h2>
                     <p class="text-gray-600 mb-2">Stand: {{ $booth->deskripsi}}</p>  
-                    <p class="text-gray-600 mb-2">Harga: {{ $booth->harga }}</p>
+                    <p class="text-gray-600 mb-2">Harga: {{ $booth->harga }}</p> <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    Pesan Sekarang
+                </button>
                 </div>
         </div>
     @endforeach
