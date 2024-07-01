@@ -37,6 +37,9 @@ Route::post('proses_login', [AuthController::class,'proses_login'])->name('prose
 Route::post('proses_register', [AuthController::class,'proses_register'])->name('proses_register'); 
 
 
+
+
+
 // Middleware Login
 Route::group(['middleware' => ['auth']], function () {
     Route::group(['middleware' => ['cek_login:admin']], function () {
