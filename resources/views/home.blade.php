@@ -29,7 +29,7 @@
                         <p class="text-white font-medium">Rp.{{ $booth->harga }}</p>
                     </div>
                     <div>
-                        <h1 class="text-white md:text-2xl font-bold">Tersedia </h1>
+                        <h1 class="text-white md:text-2xl font-bold">{{$booth-> status}} </h1>
                     </div>
                 </div>
             @endforeach
