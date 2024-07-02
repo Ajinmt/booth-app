@@ -8,8 +8,11 @@ export default {
 
     theme: {
         extend: {},
+        colors: {
+            primary: "#1d3557",
+            secondary: "#457b9d",
+            accent: "#a8dadc",
+        },
     },
-    plugins: [
-        require('flowbite/plugin')
-    ],
+    plugins: [require("flowbite/plugin")],
 };

@@ -5,56 +5,73 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   @vite('resources/css/app.css')
   <title>{{ config('app.name') }}</title>
+  @vite(['resources/css/app.css','resources/js/app.js'])
 </head>
-<body class="bg-gray-100">
-    <!-- Sticky Navbar -->
-    <nav class="sticky top-0 p-6 bg-black text-white flex justify-between items-center z-10">
-      <h1 class="text-3xl">Booth Booking</h1>
-      <div class="hidden md:block">
-        <ul class="flex gap-5">
-          <li><a href="/" class="hover:text-gray-300">Beranda</a></li>
-          <li><a href="/pesan_booth" class="hover:text-gray-300">Pesan Booth</a></li>
-          <li><a href="/cara_pemesanan" class="hover:text-gray-300">Cara Memesan Booth?</a></li>
-          <li><a href="/authPage" class="hover:text-gray-300">Login</a></li>
-        </ul>
-      </div>
-      <!-- Mobile Menu Button -->
-      <div class="block md:hidden">
-        <button id="menu-button" class="focus:outline-none">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-          </svg>
-        </button>
-      </div>
-    </nav>
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden md:hidden p-6 bg-black text-white">
-      <ul class="flex flex-col gap-5">
-        <li><a href="/" class="hover:text-gray-300">Beranda</a></li>
-        <li><a href="/pesan_booth" class="hover:text-gray-300">Pesan Booth</a></li>
-        <li><a href="/cara_pemesanan" class="hover:text-gray-300">Cara Memesan Booth?</a></li>
-        <li><a href="/authPage" class="hover:text-gray-300">Login</a></li>
-      </ul>
-    </div>
 
+<body>
+  
+
+<nav class="bg-primary dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
+  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+  <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+      <span class="self-center text-2xl font-semibold whitespace-nowrap text-white dark:text-white">Booth Booking</span>
+  </a>
+  <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+      <a href="/authPage" class="text-white bg-secondary hover:opacity-90 hover focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center">Login</a>
+      <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-sticky" aria-expanded="false">
+        <span class="sr-only">Open main menu</span>
+        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+        </svg>
+    </button>
+  </div>
+  <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+    <ul class="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-primary dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+      <li>
+        <a href="/" class="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-white md:p-0 md:dark:text-blue-500" aria-current="page">Beranda</a>
+      </li>
+      <li>
+        <a href="/pesan_booth" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-accent md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 md:text-white">Pesan Booth</a>
+      </li>
+      <li>
+        <a href="/cara_pemesanan" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-accent md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 md:text-white">Cara Memesan Booth ?</a>
+      </li>
+    </ul>
+  </div>
+  </div>
+</nav>
     <!-- Main Content -->
     <div>
         @yield('content')
     </div>
 
-    <footer class="p-6 bg-black text-white w-full mt-6">
-        <div>
-          <h1>Footer</h1>
-        </div>
-    </footer>
 
-    <script>
-      // Toggle mobile menu
-      const menuButton = document.getElementById('menu-button');
-      const mobileMenu = document.getElementById('mobile-menu');
-      menuButton.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-      });
-    </script>
+<footer class="bg-primary text-white rounded-lg shadow dark:bg-gray-900 m-4">
+    <div class="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+        <div class="sm:flex sm:items-center sm:justify-between">
+            <a href="/" class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse">
+                <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Booth Booking </span>
+            </a>
+            <ul class="flex flex-wrap items-center mb-6 text-sm font-medium  sm:mb-0 dark:text-gray-400">
+                <li>
+                    <a href="#" class="hover:underline me-4 md:me-6">About</a>
+                </li>
+                <li>
+                    <a href="#" class="hover:underline me-4 md:me-6">Privacy Policy</a>
+                </li>
+                <li>
+                    <a href="#" class="hover:underline me-4 md:me-6">Licensing</a>
+                </li>
+                <li>
+                    <a href="#" class="hover:underline">Contact</a>
+                </li>
+            </ul>
+        </div>
+        <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+        <span class="block text-sm  sm:text-center dark:text-gray-400">© 2023 <a href="https://flowbite.com/" class="hover:underline">Booth Booking</a>. All Rights Reserved.</span>
+    </div>
+</footer>
+
+
 </body>
 </html>

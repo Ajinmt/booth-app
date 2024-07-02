@@ -1,7 +1,7 @@
 @extends('layout.layout')
 @section ('content')
 <div class="flex justify-center items-center min-h-screen bg-gray-100">
-    <div class="w-full max-w-md">
+    <div class="w-full max-w-md mt-20">
         <div class="bg-white shadow-lg rounded-lg p-6">
             <h3 class="text-center text-xl font-semibold mb-4">Create Account</h3>
             <form action="{{ route('proses_register') }}" method="POST" id="regForm" class="space-y-4">
@@ -35,7 +35,7 @@
                     @endif
                 </div>
                 <div class="form-group">
-                    <button class="w-full bg-black text-white py-2 px-4 rounded-md hover:bg-gray-700 transition duration-200" type="submit">Daftar!</button>
+                    <button class="w-full bg-secondary text-white py-2 px-4 rounded-xl hover:opacity-80 transition duration-200" type="submit">Daftar!</button>
                 </div>
             </form>
             <div class="mt-4 text-center">
@@ -44,5 +44,4 @@
         </div>
     </div>
 </div>
-
 @endsection

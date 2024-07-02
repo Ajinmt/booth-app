@@ -1,11 +1,11 @@
 @extends('layout.layout')
 @section('content')
-<div id="layoutAuthentication" class="min-h-screen flex flex-col justify-center items-center bg-gray-100">
-    <div id="layoutAuthentication_content" class="w-full max-w-md">
-            <div class="container mx-auto">
+<div  class="min-h-screen flex flex-col justify-center items-center bg-gray-100">
+    <div id="layoutAuthentication_content" class="w-full max-w-md ">
+            <div class="container mx-auto ">
                 <div class="flex justify-center">
                     <div class="w-full">
-                        <div class="bg-white shadow-lg rounded-lg mt-5">
+                        <div class="bg-white shadow-lg rounded-xl mt-5 py-10">
                             {{-- Error Alert --}}
                             @if(session('error'))
                             <div class="bg-red-500 text-white text-sm font-bold px-4 py-3 rounded relative" role="alert">
@@ -18,7 +18,7 @@
                             <div class="p-6">
                                 <form action="{{url('proses_login')}}" method="POST" id="logForm">
                                     {{ csrf_field() }}
-                                    <div class="mb-4">
+                                    <div class="mb-7">
                                         @error('login_gagal')
                                             <div class="bg-yellow-500 text-white text-sm font-bold px-4 py-3 rounded relative" role="alert">
                                                 <span class="block sm:inline">  {{ $message }}</span>
@@ -35,7 +35,7 @@
                                         <span class="text-red-500 text-xs italic">{{ $errors->first('username') }}</span>
                                         @endif
                                     </div>
-                                    <div class="mb-6">
+                                    <div class="mb-7">
                                         <label class="block text-gray-700 text-sm font-bold mb-2" for="inputPassword">Password</label>
                                         <input
                                             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
@@ -47,11 +47,11 @@
                                         <span class="text-red-500 text-xs italic">{{ $errors->first('password') }}</span>
                                         @endif
                                     </div>
-                                    <div class="flex items-center justify-between mt-4 mb-0">
-                                            <button class="bg-black hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full" type="submit">Login</button>
+                                    <div class="flex items-center justify-between mt-4 mb-5">
+                                            <button class="bg-secondary  hover:bg-opacity-80 text-white font-bold py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline w-full" type="submit">Login</button>
                                     </div>
                                 </form>
-                                <p>belum punya akun? <a href="{{url('register')}}" class="text-blue-500">Daftar</a></p>
+                                <p>Belum punya akun? <a href="{{url('register')}}" class="text-blue-500">Daftar</a></p>
                             </div>
                         </div>
                     </div>
@@ -59,4 +59,7 @@
             </div>
     </div>
 </div>
+
+
+
 @endsection
