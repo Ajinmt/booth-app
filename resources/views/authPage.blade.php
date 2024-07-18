@@ -5,10 +5,10 @@
             <div class="container mx-auto ">
                 <div class="flex justify-center">
                     <div class="w-full">
-                        <div class="bg-white shadow-lg rounded-xl mt-5 py-10">
+                        <div class="bg-white shadow-lg rounded-xl md:mt-20 py-10">
                             {{-- Error Alert --}}
                             @if(session('error'))
-                            <div class="bg-red-500 text-white text-sm font-bold px-4 py-3 rounded relative" role="alert">
+                            <div class="bg-red-500 text-white text-sm font-bold px-4 py-3 rounded relative" role="alert ">
                                 {{session('error')}}
                                 <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
                                     <svg class="fill-current h-6 w-6 text-white" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Close</title><path d="M14.348 5.652a1 1 0 10-1.414-1.414L10 7.586 7.066 4.652a1 1 0 00-1.414 1.414L8.586 10l-2.934 2.934a1 1 0 101.414 1.414L10 12.414l2.934 2.934a1 1 0 001.414-1.414L11.414 10l2.934-2.934z"/></svg>
@@ -24,15 +24,15 @@
                                                 <span class="block sm:inline">  {{ $message }}</span>
                                             </div>
                                             @enderror
-                                        <label class="block text-gray-700 text-sm font-bold mb-2" for="inputEmailAddress">Username</label>
+                                        <label class="block text-gray-700 text-sm font-bold mb-2" for="inputEmailAddress">Email</label>
                                         <input
                                             class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                             id="inputEmailAddress"
-                                            name="username"
+                                            name="email"
                                             type="text"
-                                            placeholder="Masukkan Username"/>
-                                        @if($errors->has('username'))
-                                        <span class="text-red-500 text-xs italic">{{ $errors->first('username') }}</span>
+                                            placeholder="Masukkan Email"/>
+                                        @if($errors->has('email'))
+                                        <span class="text-red-500 text-xs italic">{{ $errors->first('email') }}</span>
                                         @endif
                                     </div>
                                     <div class="mb-7">
@@ -49,9 +49,16 @@
                                     </div>
                                     <div class="flex items-center justify-between mt-4 mb-5">
                                             <button class="bg-secondary  hover:bg-opacity-80 text-white font-bold py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline w-full" type="submit">Login</button>
-                                    </div>
+                                        </div>
+                                        <div>
+                                            <p class="text-center mb-3">Atau</p>
+                                            <div>
+                                                  <button class="outline  outline-1 outline-secondary  hover:bg-opacity-80  font-medium text-sm py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline w-full flex justify-center items-center focus:outline-secondary
+                                                  focus:outline " type="submit"> <img src="https://img.icons8.com/color/48/000000/google-logo.png" alt="">Login Menggunakan Google</button>
+                                            </div>
+                                        </div>
                                 </form>
-                                <p>Belum punya akun? <a href="{{url('register')}}" class="text-blue-500">Daftar</a></p>
+                                <p class="text-center mt-3">Belum punya akun? <a href="{{url('register')}}" class="text-blue-500 ">Daftar</a></p>
                             </div>
                         </div>
                     </div>

@@ -56,3 +56,6 @@ Route::group(['middleware' => ['auth']], function () {
 
 // pesan Booth 
 Route::get('/pesan_booth', [OrderController::class,'index'])->name('orderPage');
+
+// Proses Booth 
+Route::post('/booths/{id}/pesan', [OrderController::class, 'pesanBooth'])->name('proses_order');

@@ -35,13 +35,13 @@ class AuthController extends Controller
       // kita buat validasi pada saat tombol login di klik
       // validas nya username & password wajib di isi 
         $request->validate([
-            'username'=>'required',
+            'email'=>'required',
             'password'=>'required'
         ]);
     
        
        // ambil data request username & password saja 
-        $credential = $request->only('username','password');
+        $credential = $request->only('email','password');
 
       // cek jika data username dan password valid (sesuai) dengan data
         if(Auth::attempt($credential)){

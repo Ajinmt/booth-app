@@ -16,9 +16,12 @@ class OrderController extends Controller
     }
     public function pesan($id)
     {
-        // Proses pesanan booth
         
-        // Redirect ke WhatsApp setelah pesanan berhasil
         return redirect()->away("https://wa.me/6281234567890?text=Halo%20saya%20tertarik%20untuk%20memesan%20booth%20$id%20di%20acara%20anda.%20Silakan%20konfirmasi%20ketersediaan%20dan%20harga.");
+    }
+
+    public function pesanBooth($id){
+        $booth = Booth::findOrFail($id);
+        return view('orderPage', compact('booth'));
     }
 }
