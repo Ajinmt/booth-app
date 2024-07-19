@@ -1,7 +1,7 @@
-@extends('admin.adminLayout')
+@extends('layout.layout')
 
 @section('content')
-    <div class="container mx-auto mt-10">
+    <div class="container mx-auto mt-20">
         <h1 class="text-3xl font-semibold mb-6">Add Booth</h1>
         @if ($errors->any())
             <div class="bg-red-200 text-red-800 py-2 px-4 rounded mb-4">
