@@ -80,4 +80,6 @@ function shortenText($text, $wordLimit) {
     </div>
 </div>
 
+
+
 @endsection
