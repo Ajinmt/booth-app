@@ -1,7 +1,7 @@
-@extends('admin.adminLayout')
+@extends('layout.layout')
 
 @section('content')
-    <div class="container mx-auto mt-10">
+    <div class="container mx-auto mt-20">
         <h1 class="text-3xl font-semibold mb-6">User Management</h1>
 
         <a href="{{ route('user-management.create') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4">Add User</a>

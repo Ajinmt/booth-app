@@ -1,7 +1,7 @@
-@extends('admin.adminLayout')
+@extends('layout.layout')
 
 @section('content')
-<div class="flex justify-center items-center min-h-screen bg-gray-100">
+<div class="mt-20 flex justify-center items-center min-h-screen bg-gray-100">
     <div class="w-full max-w-md">
         <div class="bg-white shadow-lg rounded-lg p-6">
             <h3 class="text-center text-xl font-semibold mb-4">Edit User</h3>

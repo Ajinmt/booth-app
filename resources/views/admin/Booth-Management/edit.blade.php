@@ -1,7 +1,7 @@
-@extends('admin.adminLayout')
+@extends('layout.layout')
 
 @section('content')
-    <div class="container mx-auto mt-10">
+    <div class="container mx-auto mt-20">
         <h1 class="text-3xl font-semibold mb-6">Edit Booth</h1>
 
         <form action="{{ route('booth-management.update', $booth->id) }}" method="POST">
