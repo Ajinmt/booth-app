@@ -1,7 +1,7 @@
-@extends('admin.adminLayout')
+@extends('layout.layout')
 
 @section('content')
-    <div class="container mx-auto mt-10">
+    <div class="container mx-auto mt-20">
         <h1 class="text-3xl font-semibold mb-6">Admin Dashboard</h1>
         <div class="grid grid-cols-2 gap-4">
             <div class="bg-white p-4 shadow-md rounded-lg">
