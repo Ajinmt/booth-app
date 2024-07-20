@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\UserManagementController;
 use App\Http\Controllers\HomeController;
 use App\Models\User;
 use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\GoogleController;
 
 
 /*
@@ -64,3 +65,9 @@ Route::post('/booths/{id}/pesan', [OrderController::class, 'pesanBooth'])->name(
 
 // tambah Transaksi Booth 
 Route::post('/transaksi', [TransaksiController::class, 'storeTransaction'])->name('transaksi.store');
+
+
+
+// Oauth
+Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('google.login');
+Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback'])->name('google.callback');

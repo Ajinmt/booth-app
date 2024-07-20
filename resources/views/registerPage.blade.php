@@ -40,7 +40,7 @@
                 <div>
                 <p class="text-center mb-3">Atau</p>
                     <div>
-                        <button class="outline  outline-1 outline-secondary  hover:bg-opacity-80  font-medium text-sm py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline w-full flex justify-center items-center focus:outline-secondary focus:outline " type="submit"> <img src="https://img.icons8.com/color/48/000000/google-logo.png" alt="">Register Menggunakan Google</button>
+                        <a href="{{ route('google.login') }}" class="outline  outline-1 outline-secondary  hover:bg-opacity-80  font-medium text-sm py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline w-full flex justify-center items-center focus:outline-secondary focus:outline " type="submit"> <img src="https://img.icons8.com/color/48/000000/google-logo.png" alt="">Register Menggunakan Google</a>
                         </div>
                 </div>
             </form>
