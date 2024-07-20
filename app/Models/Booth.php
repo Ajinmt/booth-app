@@ -15,4 +15,9 @@ class Booth extends Model
         'deskripsi',
         'status',
     ];
+
+    public function transaksi()
+    {
+        return $this->hasMany(Transaksi::class);
+    }
 }

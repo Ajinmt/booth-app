@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\BoothManagementController;
 use App\Http\Controllers\Admin\UserManagementController;
 use App\Http\Controllers\HomeController;
 use App\Models\User;
+use App\Http\Controllers\TransaksiController;
 
 
 /*
@@ -59,3 +60,7 @@ Route::get('/pesan_booth', [OrderController::class,'index'])->name('orderPage');
 
 // Proses Booth 
 Route::post('/booths/{id}/pesan', [OrderController::class, 'pesanBooth'])->name('proses_order');
+
+
+// tambah Transaksi Booth 
+Route::post('/transaksi', [TransaksiController::class, 'storeTransaction'])->name('transaksi.store');
