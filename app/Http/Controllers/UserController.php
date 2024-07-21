@@ -12,11 +12,11 @@ class UserController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $transaksi = $user->transaksi()->with('booth')->get();
+        $pendingTransaksi = $user->transaksi()->with('booth')->where('status', 'pending')->get();
         $boothLove = $user->favorites()->get();
         $purchaseHistory = $user->purchaseHistory()->with('booth')->get();
 
-        return view('userPage', compact('user', 'transaksi', 'boothLove', 'purchaseHistory'));
+        return view('userPage', compact('user', 'pendingTransaksi', 'boothLove', 'purchaseHistory'));
     }
 
 }
