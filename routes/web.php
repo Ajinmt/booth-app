@@ -73,3 +73,9 @@ Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallba
 
 // Tambah Favorit
 Route::post('/booth/{id}/favorite', [BoothLoveController::class, 'toggleFavorite'])->name('toggle.favorite');
+
+
+
+// route ganti status
+Route::post('/transaction/update-status/{id}', [TransactionController::class, 'updateTransactionStatus']);
+

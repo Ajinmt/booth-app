@@ -18,6 +18,8 @@ return new class extends Migration
             $table->decimal('harga', 10, 2);
             $table->string('status', 50);
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('booth_id')->references('id')->on('booths')->onDelete('cascade');
         });
     }
 
@@ -28,4 +30,6 @@ return new class extends Migration
     {
         Schema::dropIfExists('transaksi');
     }
+
+    
 };
