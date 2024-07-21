@@ -19,6 +19,6 @@ class BoothLoveController extends Controller
         $user->favorites()->attach($booth->id);
     }
 
-    return redirect('/pesan_booth');
+    return redirect('/pesan_booth#booth-' . $booth->id);
 }
 }

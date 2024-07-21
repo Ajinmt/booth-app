@@ -5,35 +5,38 @@
 <div class="mt-20">
     <h1 class="text-center md:text-3xl mb-5">Booth Tersedia</h1>
     
-    <div class="grid grid-cols-2 md:grid-cols-4 place-items-center md:px-10 md:mt-10">
+    <img src="{{ asset('img/Denah.png') }}" class="my-10 mx-auto ">
+    <div class="grid grid-cols-1 md:grid-cols-4 place-items-center md:px-10 md:mt-10">
         @foreach ($booths as $booth)
-        <div class="w-72 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 md:py-6 py-4 mb-3">
+        <div class="w-96 md:w-72 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 md:py-6 py-4 mb-3 " id="booth-{{ $booth->id }}">
             <a href="#">
-                <h1 class="md:text-7xl text-3xl text-center font-bold">{{ $booth->nama }}</h1>
+                <h1 class="text-7xl text-7xl text-center font-bold">{{ $booth->nama }}</h1>
             </a>
-            <div class="md:px-2">
+            <div class="md:px-3 px-5">
                 <div class="w-3/4">
-                    <h5 class="md:text-md tracking-tight text-gray-900 dark:text-white">
+                    <h5 class="md:text-md text-sm tracking-tight text-gray-900 dark:text-white">
                         {{ $booth->deskripsi }}
                     </h5>
                 </div>
                 <span class="md:text-2xl font-bold text-gray-900 dark:text-white">
                     Rp.{{ number_format($booth->harga, 2, ',', '.') }}
                 </span>
-                <div class="flex items-center justify-between">
+                <div class="flex items-center justify-between gap-5 mt-5">
+                    @if (auth ()->check())
                     <div>
                         <form method="POST" action="{{ route('toggle.favorite', $booth->id) }}" id="favorite-form-{{ $booth->id }}" class="hidden">
                             @csrf
                         </form>
                         <button type="button" class="focus:outline-none love-button" data-booth-id="{{ $booth->id }}">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="{{ $booth->isFavorited() ? '#EF5A6F' : 'none' }}" stroke="black" class="size-6 love-icon {{ $booth->isFavorited() ? 'text-red-500' : 'text-gray-500' }}">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="{{ $booth->isFavorited() ? '#EF5A6F' : 'none' }}" stroke="black" class="size-8 love-icon {{ $booth->isFavorited() ? 'text-red-500' : 'text-gray-500' }}">
                                 <path d="m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z"/>
                             </svg>
                         </button>
                     </div>
+                    @endif
                     @if ($booth->status == 'tersedia')
                         @if(auth()->check())
-                            <a class="text-white bg-secondary hover:opacity-80 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center cursor-pointer pesan-button" 
+                            <a class="text-white bg-secondary hover:opacity-80 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center cursor-pointer pesan-button w-full" 
                                data-booth-id="{{ $booth->id }}" 
                                data-harga="{{ $booth->harga }}" 
                                data-modal-target="popup-modal" 
@@ -41,12 +44,12 @@
                                 Pesan
                             </a>
                         @else
-                            <a href="{{ route('login') }}" class="text-white bg-secondary hover:opacity-80 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center cursor-pointer">
+                            <a href="{{ route('login') }}" class="text-white bg-secondary hover:opacity-80 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center cursor-pointer w-full">
                                 Pesan
                             </a>
                         @endif
                     @else
-                        <button type="button" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 font-medium rounded-lg text-sm px-2 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
+                        <button type="button" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 font-medium rounded-lg text-sm px-2 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900 w-full">
                             Tidak Tersedia
                         </button>
                     @endif
