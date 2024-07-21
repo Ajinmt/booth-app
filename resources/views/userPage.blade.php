@@ -58,7 +58,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                          @foreach($transaksi as $transaksi)
+                          @foreach($pendingTransaksi as $transaksi)
                             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{$transaksi->id}}</th>
                             <td class="px-6 py-4">{{$transaksi->booth->nama}}</td>
@@ -83,12 +83,14 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach($purchaseHistory as $history)
                         <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">Apple MacBook Pro 17"</th>
-                            <td class="px-6 py-4">Silver</td>
-                            <td class="px-6 py-4">Laptop</td>
-                            <td class="px-6 py-4">$2999</td>
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{$history->id}}</th>
+                            <td class="px-6 py-4">{{$history->booth->nama}}</td>
+                            <td class="px-6 py-4">{{$history->status}}</td>
+                            <td class="px-6 py-4">Rp. {{$history->harga}}</td>
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

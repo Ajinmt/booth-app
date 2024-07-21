@@ -13,6 +13,7 @@ use App\Http\Controllers\HomeController;
 use App\Models\User;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\GoogleController;
+use App\Http\Controllers\Admin\AdminTransaksiController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -49,9 +50,23 @@ Route::group(['middleware' => ['auth']], function () {
         Route::resource('user-management', UserManagementController::class, ['parameters' => [
             'user-management' => 'user'
         ]]);
+
+        // Rute untuk menampilkan semua transaksi pending
+        Route::get('transaction/pending', [AdminTransaksiController::class, 'pendingTransactions'])->name('transactions.pending');
+        // Rute untuk mengedit transaksi berdasarkan ID
+        Route::get('transaction/{id}/edit', [AdminTransaksiController::class, 'edit'])->name('transaction.edit');
+        // Rute untuk memperbarui status transaksi
+        Route::post('transaction/{id}/update-status', [AdminTransaksiController::class, 'updateStatus'])->name('transaction.updateStatus');
+
     });
     Route::group(['middleware' => ['cek_login:user']], function () {
         Route::resource('userPage', UserController::class);
+    });
+
+    Route::group(['middleware' => ['cek_login:user'], 'prefix' => 'user', 'as' => 'user.'], function () {
+        Route::get('dashboard', [UserController::class, 'index'])->name('dashboard');
+        Route::get('transactions', [UserController::class, 'index'])->name('transactions.index');
+        Route::post('transactions', [TransaksiController::class, 'storeTransaction'])->name('transactions.store');
     });
 });
 
@@ -77,5 +92,3 @@ Route::post('/booth/{id}/favorite', [BoothLoveController::class, 'toggleFavorite
 
 
 // route ganti status
-Route::post('/transaction/update-status/{id}', [TransactionController::class, 'updateTransactionStatus']);
-
