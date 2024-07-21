@@ -34,9 +34,9 @@
                         <span class="text-red-500 text-sm">* {{ $errors->first('password') }}</span>
                     @endif
                 </div>
-                <div class="form-group">
-                    <button class="w-full bg-secondary text-white py-2 px-4 rounded-xl hover:opacity-80 transition duration-200" type="submit">Daftar!</button>
-                </div>
+                    <div class="form-group">
+                        <button class="w-full bg-secondary text-white py-2 px-4 rounded-xl hover:opacity-80 transition duration-200" type="submit">Daftar!</button>
+                    </div>
                 <div>
                 <p class="text-center mb-3">Atau</p>
                     <div>
