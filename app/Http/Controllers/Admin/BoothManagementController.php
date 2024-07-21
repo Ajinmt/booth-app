@@ -14,7 +14,7 @@ class BoothManagementController extends Controller
     public function index()
     {
         $booths = Booth::all();
-        return view('admin.booth-management.index', compact('booths'));
+        return view('admin.Booth-Management.index', compact('booths'));
     }
 
     /**
@@ -22,7 +22,7 @@ class BoothManagementController extends Controller
      */
     public function create()
     {
-        return view('admin.booth-management.create');
+        return view('admin.Booth-Management.create');
     }
 
     /**
@@ -62,7 +62,7 @@ class BoothManagementController extends Controller
     public function edit($id)
     {
         $booth = Booth::find($id);
-        return view('admin.booth-management.edit', compact('booth'));
+        return view('admin.Booth-Management.edit', compact('booth'));
     }
 
     /**

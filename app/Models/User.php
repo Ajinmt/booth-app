@@ -46,14 +46,18 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-     public function transaksi()
+    public function purchaseHistory()
+    {
+        return $this->hasMany(PurchaseHistory::class);
+    }
+    public function transaksi()
     {
         return $this->hasMany(Transaksi::class);
     }
     public function favorites()
     {
     return $this->belongsToMany(Booth::class, 'favorites');
-}
+    }
 
 
     
