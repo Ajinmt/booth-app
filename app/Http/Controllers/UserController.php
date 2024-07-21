@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 
+
 class UserController extends Controller
 {
     public function index()
@@ -13,7 +14,9 @@ class UserController extends Controller
         $user = Auth::user();
         $transaksi = $user->transaksi()->with('booth')->get();
         $boothLove = $user->favorites()->get();
-        return view('userPage', compact('user', 'transaksi', 'boothLove'));
+        $purchaseHistory = $user->purchaseHistory()->with('booth')->get();
+
+        return view('userPage', compact('user', 'transaksi', 'boothLove', 'purchaseHistory'));
     }
 
 }

@@ -67,7 +67,7 @@ class UserManagementController extends Controller
     public function show($id)
     {
         $user = User::findOrFail($id);
-        return view('admin.user-management.show', compact('user'));
+        return view('admin.User-Management.show', compact('user'));
     }
 
     /**
@@ -76,7 +76,7 @@ class UserManagementController extends Controller
     public function edit($id)
     {
         $user = User::findOrFail($id);
-        return view('admin.user-management.edit', compact('user'));
+        return view('admin.User-Management.edit', compact('user'));
     }
 
     /**

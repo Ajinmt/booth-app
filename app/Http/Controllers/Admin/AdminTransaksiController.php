@@ -1,33 +1,24 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Booth;
 use App\Models\Transaksi;
 use App\Models\PurchaseHistory;
 
-class TransaksiController extends Controller
+class AdminTransaksiController extends Controller
 {
-    public function storeTransaction(Request $request)
-{
-    $user = auth()->user();
-    $booth = Booth::find($request->booth_id);
-
-    $transaksi = new transaksi([
-        'user_id' => $user->id,
-        'booth_id' => $booth->id,
-        'harga' => $booth->harga,
-        'status' => 'pending', // atau status lainnya
-    ]);
-
-    $transaksi->save();
-
-    // return redirect()->route('/')->with('success', 'Transaksi berhasil ditambahkan.');
-
-      return redirect()->intended('/userPage');
-}
-
+        /**
+     * Tampilkan daftar transaksi pending.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function pendingTransactions()
+    {
+        $pendingTransactions = Transaksi::where('status', 'pending')->get();
+        return view('admin.Transaction.pending_transaction', compact('pendingTransactions'));
+    }
 
     /**
      * Tampilkan form untuk mengubah status transaksi.
@@ -66,7 +57,6 @@ class TransaksiController extends Controller
             // $transaction->delete();
         }
 
-        return redirect()->route('transaction.edit', $transaction->id)->with('success', 'Status berhasil diubah!');
+        return redirect()->route('transactions.pending')->with('success', 'Status berhasil diubah!');
     }
 }
-
