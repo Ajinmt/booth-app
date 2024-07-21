@@ -8,12 +8,11 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\BoothManagementController;
 use App\Http\Controllers\Admin\UserManagementController;
+use App\Http\Controllers\BoothLoveController;
 use App\Http\Controllers\HomeController;
 use App\Models\User;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\GoogleController;
-
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -71,3 +70,6 @@ Route::post('/transaksi', [TransaksiController::class, 'storeTransaction'])->nam
 // Oauth
 Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('google.login');
 Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback'])->name('google.callback');
+
+// Tambah Favorit
+Route::post('/booth/{id}/favorite', [BoothLoveController::class, 'toggleFavorite'])->name('toggle.favorite');
