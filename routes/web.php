@@ -13,6 +13,7 @@ use App\Http\Controllers\HomeController;
 use App\Models\User;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\GoogleController;
+use App\Http\Controllers\PDFController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -78,4 +79,8 @@ Route::post('/booth/{id}/favorite', [BoothLoveController::class, 'toggleFavorite
 
 // route ganti status
 Route::post('/transaction/update-status/{id}', [TransactionController::class, 'updateTransactionStatus']);
+
+
+// pdf
+Route::get('/generate-pdf', [PDFController::class, 'generatePDF']);
 
