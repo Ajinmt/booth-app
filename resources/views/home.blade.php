@@ -26,24 +26,24 @@ function shortenText($text, $wordLimit) {
 <div  id="check-booth">
     <h1 class="text-center md:text-3xl mb-5">Booth Tersedia</h1>
     <div class="flex justify-center items-center flex-col">
-      <div class="md:px-52">
+      <div class="md:px-52 mb-10">
         <img src="  {{ asset('img/Denah.png') }}" alt="">
       </div>
-        <div class="flex md:flex-row md:justify-center md:gap-10 gap-3 md:p-5 flex-wrap w-full max-h-screen overflow-hidden ">
+        <div class="grid md:grid-cols-4 grid-cols-1 md:place-items-stretch place-items-center md:gap-10 gap-3 md:p-10  w-full max-h-screen overflow-hidden ">
             <!-- Loop through booths here -->
               @foreach ($booths as $booth)
          <div class="w-80 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 md:py-6 py-4 mb-3"> 
             <a href="{{ route('orderPage', $booth->id)}}">
                 <h1 class="md:text-7xl text-3xl text-center font-bold">{{ $booth->nama }}</h1>
             </a>
-            <div class="md:px-3">
+            <div class="md:px-4 px-4">
                 <div class="w-3/4">
                     <h5 class="md:text-md tracking-tight text-gray-900 dark:text-white">
                         <?php echo shortenText($booth->deskripsi, 5); ?>
                     </h5>
                 </div>
                 <div class="flex items-center justify-between">
-                    <span class="md:text-2xl font-bold text-gray-900 dark:text-white">Rp.{{ number_format($booth->harga, 2, ',', '.') }}</span>
+                    <span class="md:text-2xl font-bold text-gray-900 dark:text-white">Rp. {{ number_format($booth->harga, 2) }}</span>
                     @if ($booth->status == 'tersedia')
                         <button type="button" class="focus:outline-none text-white bg-secondary hover:opacity-80 font-medium rounded-lg text-sm px-2 py-2.5 me-2 mb-2 ">Tersedia</button>
                     @else

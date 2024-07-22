@@ -19,7 +19,7 @@
                     </h5>
                 </div>
                 <span class="md:text-2xl font-bold text-gray-900 dark:text-white">
-                    Rp.{{ number_format($booth->harga, 2, ',', '.') }}
+                    Rp. {{ number_format($booth->harga, 2) }}
                 </span>
                 <div class="flex items-center justify-between gap-5 mt-5">
                     @if (auth ()->check())

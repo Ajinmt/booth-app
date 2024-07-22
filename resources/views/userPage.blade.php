@@ -61,7 +61,7 @@
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{$transaksi->id}}</th>
                             <td class="px-6 py-4">{{$transaksi->booth->nama}}</td>
                             <td class="px-6 py-4">{{$transaksi->status}}</td>
-                            <td class="px-6 py-4">Rp. {{$transaksi->harga}}</td>
+                            <td class="px-6 py-4">Rp. {{ number_format($transaksi->harga, 2) }}</td>
                         </tr>
                           @endforeach
                     </tbody>
@@ -87,7 +87,7 @@
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{$history->id}}</th>
                             <td class="px-6 py-4">{{$history->booth->nama}}</td>
                             <td class="px-6 py-4">{{$history->status}}</td>
-                            <td class="px-6 py-4">Rp. {{$history->harga}}</td>
+                            <td class="px-6 py-4">Rp.{{ number_format($history->harga, 2) }}</td>
                             <td class="px-6 py-4">  <a href="{{ route('transaction.pdf', $history->id) }}" target="_blank" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-secondary hover:opacity-80 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Print PDF</a></td>
                         </tr>
                         @endforeach
