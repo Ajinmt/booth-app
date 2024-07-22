@@ -17,7 +17,7 @@ class AdminTransaksiController extends Controller
     public function pendingTransactions()
     {
         $pendingTransactions = Transaksi::where('status', 'pending')->get();
-        return view('admin.Transaction.pending_transaction', compact('pendingTransactions'));
+        return view('admin.Transaction.Pending_transaction', compact('pendingTransactions'));
     }
 
     /**
