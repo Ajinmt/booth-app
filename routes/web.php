@@ -15,6 +15,8 @@ use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\Admin\AdminTransaksiController;
+use App\Models\Transaksi;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -93,5 +95,6 @@ Route::post('/booth/{id}/favorite', [BoothLoveController::class, 'toggleFavorite
 
 
 // pdf
-Route::get('/generate-pdf', [PDFController::class, 'generatePDF']);
+Route::get('/user/transaction/{id}/pdf', [TransaksiController::class, 'downloadPdf'])->name('transaction.pdf');
+
 

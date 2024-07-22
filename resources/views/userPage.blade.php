@@ -2,17 +2,16 @@
 
 @section('content')
 <div class="mt-20">
-    <div class="grid md:grid-cols-3 grid-cols-1 place-items-center md:place-items-stretch  gap-4 px-5 ">
+    <div class="grid md:grid-cols-3 grid-cols-1 place-items-center  md:place-items-stretch  md:gap-0 gap-y-10 md:px-5 ">
         <div>
-             <div class="w-full max-w-sm bg-white border border-gray-200 rounded-2xl shadow dark:bg-gray-800 dark:border-gray-700 h-fit   ">
-            <div class="flex flex-col items-center py-10">
-                <img class="w-24 h-24 mb-3 rounded-full shadow-lg" src="{{ asset('img/Profile.png') }}" alt="Profile image"/>
-                <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">{{ $user->name }}</h5>
-                <p class="text-sm text-gray-500 dark:text-gray-400">{{ $user->username }}</p>
-                <p class="text-sm text-gray-500 dark:text-gray-400">{{ $user->email }}</p>
-                <div class="flex mt-4 md:mt-6 gap-8">
-                    <a href="#" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-secondary hover:opacity-80 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Print PDF</a>
-                    <a href="{{ url('logout') }}" class="py-2 px-4 ms-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4">Logout</a>
+            <div class="w-full max-w-sm bg-white border border-gray-200 rounded-2xl shadow dark:bg-gray-800 dark:border-gray-700 h-fit   ">
+                <div class="flex flex-col items-center py-10">
+                    <img class="w-24 h-24 mb-3 rounded-full shadow-lg" src="{{ asset('img/Profile.png') }}" alt="Profile image"/>
+                    <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">{{ $user->name }}</h5>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">{{ $user->username }}</p>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">{{ $user->email }}</p>
+                    <div class="flex mt-4 md:mt-6 gap-8">
+                        <a href="{{ url('logout') }}" class="py-4 px-10 ms-2 text-sm font-medium text-red-700 focus:outline-none bg-white rounded-lg border border-red-500 hover:bg-gray-100 hover:text-red-700 focus:z-10 focus:ring-4">Logout</a>
                 </div>
             </div>
         </div>
@@ -40,13 +39,12 @@
                 @endforeach
                     </tbody>
                 </table>
-</div>
-
+            </div>
         </div>
         </div>
         <div class ="col-span-2">
             <!-- Tabel Pembelian -->
-            <div class="relative overflow-x-auto mb-20">
+            <div class="relative overflow mb-20 md:mx-0 mx-6">
                 <h1 class="text-xl  mb-4">Pembelian</h1>
                 <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -76,10 +74,11 @@
                 <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
-                            <th scope="col" class="px-6 py-3">Product name</th>
-                            <th scope="col" class="px-6 py-3">Color</th>
-                            <th scope="col" class="px-6 py-3">Category</th>
-                            <th scope="col" class="px-6 py-3">Price</th>
+                            <th scope="col" class="px-6 py-3">Id Transaksi</th>
+                            <th scope="col" class="px-6 py-3">Nomor Booth</th>
+                            <th scope="col" class="px-6 py-3">Status</th>
+                            <th scope="col" class="px-6 py-3">Harga</th>
+                            <th scope="col" class="px-6 py-3">Download PDF</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -89,6 +88,7 @@
                             <td class="px-6 py-4">{{$history->booth->nama}}</td>
                             <td class="px-6 py-4">{{$history->status}}</td>
                             <td class="px-6 py-4">Rp. {{$history->harga}}</td>
+                            <td class="px-6 py-4">  <a href="{{ route('transaction.pdf', $history->id) }}" target="_blank" class="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-secondary hover:opacity-80 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Print PDF</a></td>
                         </tr>
                         @endforeach
                     </tbody>

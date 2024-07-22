@@ -22,36 +22,7 @@
                     Rp.{{ number_format($booth->harga, 2, ',', '.') }}
                 </span>
                 <div class="flex items-center justify-between gap-5 mt-5">
-                    <div>
-                        <form method="POST" action="{{ route('toggle.favorite', $booth->id) }}" id="favorite-form-{{ $booth->id }}" class="hidden">
-                            @csrf
-                        </form>
-                        <button type="button" class="focus:outline-none love-button" data-booth-id="{{ $booth->id }}">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="{{ $booth->isFavorited() ? '#EF5A6F' : 'none' }}" stroke="black" class="size-6 love-icon {{ $booth->isFavorited() ? 'text-red-500' : 'text-gray-500' }}">
-                                <path d="m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z"/>
-                            </svg>
-                        </button>
-                    </div>
-                    @if ($booth->status == 'tersedia')
-                        @if(auth()->check())
-                            <a class="text-white bg-secondary hover:opacity-80 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center cursor-pointer pesan-button" 
-                               data-booth-id="{{ $booth->id }}" 
-                               data-harga="{{ $booth->harga }}" 
-                               data-modal-target="popup-modal" 
-                               data-modal-toggle="popup-modal">
-                                Pesan
-                            </a>
-                        @else
-                            <a href="{{ route('login') }}" class="text-white bg-secondary hover:opacity-80 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center cursor-pointer">
-                                Pesan
-                            </a>
-                        @endif
-                    @else
-                        <button type="button" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 font-medium rounded-lg text-sm px-2 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900">
-                            Tidak Tersedia
-                        </button>
-                    @endif
-                    {{-- @if (auth ()->check())
+                    @if (auth ()->check())
                     <div>
                         <form method="POST" action="{{ route('toggle.favorite', $booth->id) }}" id="favorite-form-{{ $booth->id }}" class="hidden">
                             @csrf
@@ -67,7 +38,7 @@
                         @if(auth()->check())
                             <a class="text-white bg-secondary hover:opacity-80 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center cursor-pointer pesan-button w-full" 
                                data-booth-id="{{ $booth->id }}" 
-                               data-harga="{{ $booth->harga }}" 
+                               data-harga="{{ $booth->harga }} " 
                                data-modal-target="popup-modal" 
                                data-modal-toggle="popup-modal">
                                 Pesan
@@ -81,7 +52,7 @@
                         <button type="button" class="focus:outline-none text-white bg-red-700 hover:bg-red-800 font-medium rounded-lg text-sm px-2 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900 w-full">
                             Tidak Tersedia
                         </button>
-                    @endif --}}
+                    @endif 
                 </div>
             </div>
         </div>

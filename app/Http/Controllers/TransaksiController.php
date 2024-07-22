@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Booth;
 use App\Models\Transaksi;
 use App\Models\PurchaseHistory;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class TransaksiController extends Controller
 {
@@ -67,6 +68,13 @@ class TransaksiController extends Controller
         }
 
         return redirect()->route('transaction.edit', $transaction->id)->with('success', 'Status berhasil diubah!');
+    }
+
+       public function downloadPdf($id)
+    {
+        $transaction = Transaksi::findOrFail($id);
+        $pdf = PDF::loadView('transaksiPdf', compact('transaction'));
+        return $pdf->download('transaction-'.$id.'.pdf');
     }
 }
 
