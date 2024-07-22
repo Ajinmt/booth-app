@@ -4,7 +4,17 @@
 
 <div class="mt-20">
     <h1 class="text-center md:text-3xl mb-5">Booth Tersedia</h1>
-    
+         @if(session('error'))
+    <div id="error-alert" class="bg-red-500 w-fit mx-auto p-32 text-white text-center py-2 rounded mb-5 relative">
+        {{ session('error') }}
+        <button id="close-error-alert" class="absolute top-2 right-2 text-white hover:text-gray-300 focus:outline-none">
+            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+            </svg>
+            <span class="sr-only">Close alert</span>
+        </button>
+    </div>
+@endif
     <img src="{{ asset('img/Denah.png') }}" class="my-10 mx-auto ">
     <div class="grid grid-cols-1 md:grid-cols-4 place-items-center md:px-10 md:mt-10">
         @foreach ($booths as $booth)
@@ -120,6 +130,17 @@
                 form.submit();
             });
         });
+
+
+         const closeErrorAlertButton = document.getElementById('close-error-alert');
+    if (closeErrorAlertButton) {
+        closeErrorAlertButton.addEventListener('click', function () {
+            const errorAlert = document.getElementById('error-alert');
+            if (errorAlert) {
+                errorAlert.style.display = 'none';
+            }
+        });
+    }
     });
 </script>
 

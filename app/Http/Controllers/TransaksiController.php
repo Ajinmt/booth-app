@@ -15,16 +15,22 @@ class TransaksiController extends Controller
     $user = auth()->user();
     $booth = Booth::find($request->booth_id);
 
+    $existingTransaction = Transaksi::where('user_id', $user->id)
+                                     ->where('booth_id', $booth->id)
+                                     ->first();
+
+    if ($existingTransaction) {
+        return redirect()->back()->with('error', 'Anda Telah Memilih Booth Ini.');
+    }
+
     $transaksi = new transaksi([
         'user_id' => $user->id,
         'booth_id' => $booth->id,
         'harga' => $booth->harga,
-        'status' => 'pending', // atau status lainnya
+        'status' => 'pending', 
     ]);
 
     $transaksi->save();
-
-    // return redirect()->route('/')->with('success', 'Transaksi berhasil ditambahkan.');
 
       return redirect()->intended('/userPage');
 }
